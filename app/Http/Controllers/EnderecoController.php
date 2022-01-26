@@ -13,6 +13,14 @@ class EnderecoController extends Controller{
     public function buscar(Request $request){
         $cep = $request->input('cep');
         $response = Http::get("viacep.com.br/ws/$cep/json/") -> json();
-        dd($response);
+        
+        return view('adicionar') -> with([
+            'cep' => $request -> input('cep'),
+            'logradouro' => $response['logradouro'],
+            'bairro' => $response['bairro'],
+            'localidade' => $response['localidade'],
+            'estado' => $response['uf'],
+        ]);
     }
+
 }
