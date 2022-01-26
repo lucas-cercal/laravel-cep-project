@@ -8,17 +8,38 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Buscar CEP</title>
+    <title>Adicionar CEP</title>
   </head>
   <body>
     <div class="container">
-        <h1 class="mb-5">Buscar CEP</h1>
+        <h1 class="mb-5">Adicionar CEP</h1>
         <form action="{{route('buscar')}}" method="GET">
             <div class="form-group">
               <label>CEP</label>
-              <input type="text" class="form-control" name="cep" placeholder="Digite o seu CEP">
+              <input type="text" class="form-control" name="cep" value="{{$cep}}">
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <div class="form-group">
+              <label>Logradouro</label>
+              <input type="text" class="form-control" name="logradouro" value="{{$logradouro}}">
+            </div>
+            <div class="form-group">
+              <label>Bairro</label>
+              <input type="text" class="form-control" name="bairro" value="{{$bairro}}">
+            </div>
+            <div class="form-group">
+              <label>Localidade</label>
+              <input type="text" class="form-control" name="localidade" value="{{$localidade}}">
+            </div>
+            <div class="form-group">
+              <label>Estado</label>
+              <input type="text" class="form-control" name="estado" value="{{$estado}}">
+            </div>
+            <div class="form-group">
+              <label>Número</label>
+              <input type="text" class="form-control" name="numero">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Salvar</button>
           </form>
     </div>
 
