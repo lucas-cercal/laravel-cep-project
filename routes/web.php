@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EnderecoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('busca');
-});
+//Route::get('/', 'EnderecoController@index');
+Route::get('/', [EnderecoController::class, 'index']) -> name('home');
+Route::get('/buscar', [EnderecoController::class, 'buscar']) -> name('buscar');
+
