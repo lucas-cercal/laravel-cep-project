@@ -13,7 +13,8 @@
   <body>
     <div class="container">
         <h1 class="mb-5">Adicionar CEP</h1>
-        <form action="{{route('buscar')}}" method="GET">
+        <form action="{{route('salvar')}}" method="POST">
+          @csrf
             <div class="form-group">
               <label>CEP</label>
               <input type="text" class="form-control" name="cep" value="{{$cep}}">
