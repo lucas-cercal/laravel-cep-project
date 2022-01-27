@@ -13,6 +13,15 @@
   <body>
     <div class="container">
         <h1 class="mb-5">Adicionar CEP</h1>
+        @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach($errors->all() as $errors)
+                <li>{{$errors}}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
         <form action="{{route('salvar')}}" method="POST">
           @csrf
             <div class="form-group">
