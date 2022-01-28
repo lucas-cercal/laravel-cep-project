@@ -22,6 +22,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Composer](https://getcomposer.org/)
 - [MySQL](https://www.mysql.com/)
 - [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 - [Bootstrap](https://getbootstrap.com/)
 
 ### Pré-requisitos
