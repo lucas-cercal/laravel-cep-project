@@ -9,6 +9,13 @@ use App\Models\Endereco;
 
 class EnderecoController extends Controller{
     public function index(){
+        $enderecos = Endereco::all();
+        return view('listagem') -> with([
+            'enderecos' => $enderecos,
+        ]);
+    }
+
+    public function adicionar(){
         return view('busca');
     }
 
