@@ -18,6 +18,17 @@
        <a class="btn btn-success" href="{{route('adicionar')}}">
             Adicionar CEP
        </a>
+
+        @if(session('sucesso'))
+            <div class="alert alert-success" role="alert">
+            {{session('sucesso')}}
+            </div>
+        @endif
+        @if(session('erro'))
+            <div class="alert alert-danger" role="alert">
+            {{session('erro')}}
+            </div>
+        @endif
        <table class="table mt-5">
   <thead>
     <tr>
