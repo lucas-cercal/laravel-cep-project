@@ -15,7 +15,7 @@
        <h1 class="mb-5">
            Endereços Cadastrados
        </h1>
-       <a class="btn btn-success" href="adicionar">
+       <a class="btn btn-success" href="{{route('adicionar')}}">
             Adicionar CEP
        </a>
        <table class="table mt-5">

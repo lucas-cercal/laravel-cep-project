@@ -42,7 +42,7 @@ class EnderecoController extends Controller{
             'numero' => $request->input('numero'),
         ]);  
 
-        dd($endereco->id);
+        return redirect('/'); 
     } 
  
 }
