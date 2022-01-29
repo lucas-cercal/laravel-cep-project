@@ -10,19 +10,19 @@
   </a>
 
   @if(session('sucesso'))
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success mt-2" role="alert">
       {{session('sucesso')}}
     </div>
   @endif
 
   @if(session('erro'))
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger mt-2" role="alert">
       {{session('erro')}}
     </div>
   @endif
 
-  <table class="table mt-5">
-    
+  <table class="table table-striped mt-5 shadow-lg p-3 mb-5 bg-body rounded">
+
     <thead>
       <tr>
         <th scope="col">ID</th>
