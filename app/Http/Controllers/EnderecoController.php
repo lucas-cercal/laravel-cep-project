@@ -22,6 +22,10 @@ class EnderecoController extends Controller{
     public function buscar(Request $request){
         $cep = $request->input('cep');
         $response = Http::get("viacep.com.br/ws/$cep/json/") -> json();
+
+        if(!$response){
+            return redirect('/adicionar') -> withErro('CEP não encontrado!');
+        }
         
         return view('adicionar') -> with([
             'cep' => $request -> input('cep'),
