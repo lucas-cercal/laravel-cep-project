@@ -30,7 +30,7 @@ class EnderecoController extends Controller{
 
         $response = Http::get("viacep.com.br/ws/$cepFormatado/json/") -> json();
 
-        if($response === 'erro'){
+        if(is_array($response) && array_key_exists("erro", $response)){
             return redirect('/adicionar') -> withErro('CEP não encontrado!');
         }
         
