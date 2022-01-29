@@ -24,9 +24,13 @@ class EnderecoController extends Controller{
         $cep = $request -> input ('cep');
         $cepFormatado = preg_replace("/[^0-9]/", "", $cep); 
 
+        if($cepFormatado == ''){
+            return redirect('/adicionar') -> withErro('Por favor, insira um CEP válido!');
+        }
+
         $response = Http::get("viacep.com.br/ws/$cepFormatado/json/") -> json();
 
-        if($response === true){
+        if($response === 'erro'){
             return redirect('/adicionar') -> withErro('CEP não encontrado!');
         }
         
