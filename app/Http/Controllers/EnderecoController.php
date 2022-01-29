@@ -38,11 +38,14 @@ class EnderecoController extends Controller{
 
     public function salvar(SalvarRequest $request){
 
-        $endereco = Endereco::where('cep', $request->input('cep')) -> first();
+        $cep = $request -> input ('cep');
+        $cepFormatado = preg_replace("/[^0-9]/", "", $cep); 
 
+        $endereco = Endereco::where('cep', $cepFormatado) -> first();
+        
         if(!$endereco){
             $endereco = Endereco::create([
-                'cep' => $request->input('cep'),
+                'cep' => $cepFormatado,
                 'logradouro' => $request->input('logradouro'),
                 'bairro' => $request->input('bairro'),
                 'localidade' => $request->input('localidade'),
