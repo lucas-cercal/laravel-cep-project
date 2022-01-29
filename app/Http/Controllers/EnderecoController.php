@@ -23,7 +23,7 @@ class EnderecoController extends Controller{
         $cep = $request->input('cep');
         $response = Http::get("viacep.com.br/ws/$cep/json/") -> json();
 
-        if($response == true){
+        if($response === true){
             return redirect('/adicionar') -> withErro('CEP não encontrado!');
         }
         
