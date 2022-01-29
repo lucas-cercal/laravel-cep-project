@@ -24,6 +24,10 @@ class EnderecoController extends Controller{
         $cep = $request -> input ('cep');
         $cepFormatado = preg_replace("/[^0-9]/", "", $cep); 
 
+        if(strlen($cepFormatado) > 8){
+            return redirect('/adicionar') -> withErro('Preencha o CEP com no máximo oito dígitos.');
+        }
+
         if($cepFormatado == ''){
             return redirect('/adicionar') -> withErro('Por favor, insira um CEP válido!');
         }
