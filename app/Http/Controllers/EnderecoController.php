@@ -19,6 +19,13 @@ class EnderecoController extends Controller{
         return view('busca');
     }
 
+    public function deletar($cep){
+        $cepD = Endereco::where('cep',$cep)->first();
+        $cepD->delete();
+
+        return redirect('/') -> withSucesso('Endereço removido com sucesso!');
+    }
+
     public function buscar(Request $request){
 
         $cep = $request -> input ('cep');

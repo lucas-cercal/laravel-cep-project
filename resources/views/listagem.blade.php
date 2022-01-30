@@ -22,7 +22,7 @@
   @endif
 
   <table class="table table-striped mt-5 shadow-lg p-3 mb-5 bg-body rounded">
-
+  
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -33,6 +33,7 @@
         <th scope="col">Estado</th>
         <th scope="col">Número</th>
         <th scope="col">Data de criação</th>
+        <th scope="col">Remover</th>
       </tr>
     </thead>
 
@@ -47,6 +48,7 @@
           <td>{{$endereco->estado}}</td>
           <td>{{$endereco->numero}}</td>
           <td>{{(new DateTime($endereco->created_at)) -> format('d/m/y H:i:s')}}</td>
+          <td><a class="btn btn-danger" href="{{route('deletar', [$endereco -> cep])}}">Excluir</a></td>
         </tr>
       @endforeach
     </tbody>
