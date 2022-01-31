@@ -15,7 +15,7 @@ https://hub.docker.com/
 
 ### 🛠 Tecnologias
 
-As seguintes ferramentas foram usadas na construção do projeto:
+As seguintes tecnologias foram usadas na construção do projeto:
 
 - [PHP](https://www.php.net/)
 - [Laravel](https://laravel.com/)
