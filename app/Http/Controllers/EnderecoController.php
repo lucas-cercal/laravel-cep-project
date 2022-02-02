@@ -19,12 +19,34 @@ class EnderecoController extends Controller{
         return view('busca');
     }
 
+    public function deletar($cep){
+        $cepD = Endereco::where('cep',$cep)->first();
+        $cepD->delete();
+
+        return redirect('/') -> withSucesso('Endereço removido com sucesso!');
+    }
+
     public function buscar(Request $request){
-        $cep = $request->input('cep');
-        $response = Http::get("viacep.com.br/ws/$cep/json/") -> json();
+
+        $cep = $request -> input ('cep');
+        $cepFormatado = preg_replace("/[^0-9]/", "", $cep); 
+
+        if(strlen($cepFormatado) > 8 || strlen($cepFormatado) < 8){
+            return redirect('/adicionar') -> withErro('Preencha o CEP válido com apenas 8 dígitos.');
+        }
+
+        if($cepFormatado == '' || !is_numeric($cepFormatado)){
+            return redirect('/adicionar') -> withErro('Por favor, insira um CEP válido!');
+        }
+
+        $response = Http::get("viacep.com.br/ws/$cepFormatado/json/") -> json();
+
+        if(is_array($response) && array_key_exists("erro", $response)){
+            return redirect('/adicionar') -> withErro('CEP não encontrado!');
+        }
         
         return view('adicionar') -> with([
-            'cep' => $request -> input('cep'),
+            'cep' => $cepFormatado,
             'logradouro' => $response['logradouro'],
             'bairro' => $response['bairro'],
             'localidade' => $response['localidade'],
@@ -34,11 +56,14 @@ class EnderecoController extends Controller{
 
     public function salvar(SalvarRequest $request){
 
-        $endereco = Endereco::where('cep', $request->input('cep')) -> first();
+        $cep = $request -> input ('cep');
+        $cepFormatado = preg_replace("/[^0-9]/", "", $cep); 
 
+        $endereco = Endereco::where('cep', $cepFormatado) -> first();
+        
         if(!$endereco){
             $endereco = Endereco::create([
-                'cep' => $request->input('cep'),
+                'cep' => $cepFormatado,
                 'logradouro' => $request->input('logradouro'),
                 'bairro' => $request->input('bairro'),
                 'localidade' => $request->input('localidade'),
