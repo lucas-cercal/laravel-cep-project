@@ -94,22 +94,10 @@ Agent pid 1943
 
 2 - Digite `ssh-add` seguido pelo caminho para o arquivo de chave privada:
 
-Linux / Windows (git-bash)
+Linux / Windows (git-bash/wsl)
 ```
 ssh-add ~/.ssh/<private_key_file>
 ```
-
-macOS
-```
-ssh-add -K ~/.ssh/<private_key_file>
-```
-
-3 - (somente macOS) Para que seu computador se lembre da sua senha toda vez que reiniciar, abra (ou crie) o arquivo `~/.ssh/config` e adicione estas linhas ao arquivo:
-```
-Host *
-  UseKeychain yes
-```
-
 
 #### Passo 3 - Adicionar a chave à conta GitHub
 
@@ -143,3 +131,5 @@ $ code .
 ### 🎲 Rodando o projeto
 
 ```bash
+
+```
