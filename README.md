@@ -111,7 +111,7 @@ Depois de ter copiado o conteúdo da chave, clique no botão  **New SSH key**, e
 
 Pronto! já podemos clonar os repositórios com tranquilidade.
 
-#### Clone de repositórios 
+#### Clone do repositório
 
 ```
 # Clone este repositório
@@ -130,23 +130,54 @@ $ code .
 
 ### 🎲 Rodando o projeto
 
-```bash
-# Certifique-se que o serviço do docker está ativo e funcionando corretamente
-sudo service docker status
-
-# Caso o serviço não esteja rodando, use o comando:
-sudo service docker start
-
-# Após ter iniciado o serviço Docker, use o comando para compilar as imagens do aplicativo:
-docker-compose build app
-
-# Esse comando deve durar alguns minutos para completar.
-
-# Quando a compilação for concluída, use o comando para rodar em segundo plano:
-docker-compose up -d
-
-# Para verificar se o comando acima funcionou corretamente, use:
-docker-compose ps
-
-# Ele irá listar os conteiners que estão ativos no momento.
+Certifique-se que o serviço do docker está ativo e funcionando corretamente
 ```
+sudo service docker status
+```
+
+Caso o serviço não esteja rodando, use o comando:
+```
+sudo service docker start
+```
+
+Após ter iniciado o serviço Docker, use o comando para compilar as imagens do aplicativo:
+```
+docker-compose build app
+```
+
+> Esse comando deve durar alguns minutos para completar.
+
+
+Quando a compilação for concluída, use o comando para rodar em segundo plano:
+```
+docker-compose up -d
+```
+
+Para verificar se o comando acima funcionou corretamente, use:
+```
+docker-compose ps
+```
+
+
+Ele irá listar os conteiners que estão ativos no momento.
+
+
+Agora precisamos instalar as dependências do aplicativo, para isso utilizamos o `composer install`
+```
+docker-compose exec app composer install
+```
+
+Após ter instalado todas as dependências necessárias do projeto, precisamos gerar uma chave única para o aplicativo com a `artisan`
+```
+docker-compose exec app php artisan key:generate
+```
+> Essa chave é usada para criptografar sessões de usuário e outros dados confidenciais.
+
+
+Agora vá até o seu navegador e acesse o nome de domínio ou endereço IP do seu servidor na porta 8000:
+```
+http://server_domain_or_IP:8000
+```
+
+
+
