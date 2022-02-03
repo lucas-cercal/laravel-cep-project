@@ -159,7 +159,7 @@ docker-compose ps
 ```
 
 
-Ele irá listar os conteiners que estão ativos no momento.
+Ele irá listar os containers que estão ativos no momento.
 
 
 Agora precisamos instalar as dependências do aplicativo, para isso utilizamos o `composer install`
