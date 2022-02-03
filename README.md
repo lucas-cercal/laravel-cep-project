@@ -174,7 +174,7 @@ docker-compose exec app php artisan key:generate
 > Essa chave é usada para criptografar sessões de usuário e outros dados confidenciais.
 
 
-Acesse o container do banco de dados, em seguida use o comando `artisan`
+Acesse o container do banco de dados, em seguida use o comando:
 ```
 docker exec -it laravel-cep-app /bin/bash
 ```
