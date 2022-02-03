@@ -131,5 +131,22 @@ $ code .
 ### 🎲 Rodando o projeto
 
 ```bash
+# Certifique-se que o serviço do docker está ativo e funcionando corretamente
+sudo service docker status
 
+# Caso o serviço não esteja rodando, use o comando:
+sudo service docker start
+
+# Após ter iniciado o serviço Docker, use o comando para compilar as imagens do aplicativo:
+docker-compose build app
+
+# Esse comando deve durar alguns minutos para completar.
+
+# Quando a compilação for concluída, use o comando para rodar em segundo plano:
+docker-compose up -d
+
+# Para verificar se o comando acima funcionou corretamente, use:
+docker-compose ps
+
+# Ele irá listar os conteiners que estão ativos no momento.
 ```
