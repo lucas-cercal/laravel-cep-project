@@ -174,6 +174,18 @@ docker-compose exec app php artisan key:generate
 > Essa chave é usada para criptografar sessões de usuário e outros dados confidenciais.
 
 
+Acesse o container do banco de dados, em seguida use o comando `artisan`
+```
+docker exec -it laravel-cep-app /bin/bash
+```
+> Com o comando acima você estará dentro do container aplicativo.
+
+Em seguida rode o comando `artisan` para criar todas as tabelas necessárias do projeto:
+```
+docker-compose exec app php artisan migrate
+```
+
+
 Agora vá até o seu navegador e acesse o nome de domínio ou endereço IP do seu servidor na porta 8000:
 ```
 http://server_domain_or_IP:8000
